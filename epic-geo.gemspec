@@ -14,6 +14,8 @@ Gem::Specification.new do |s|
   # If you have runtime dependencies, add them here
   # s.add_runtime_dependency "other", "~> 1.2"
 
+  # It will need all sorts of dependencies such as rgeo, ruby/gems, etc...
+
   # If you have development dependencies, add them here
   # s.add_development_dependency "another", "= 0.9"
 
