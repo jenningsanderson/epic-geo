@@ -17,11 +17,20 @@ describe KMLAuthor do
   		expect(File).to exist('kmltestfile.kml')
   	end
 
-  	it "can write random styles" do
-  		write_color_ramp_style(@testfile.openfile, 9)
+  	it "can write a color ramp" do
+  		num_styles = 10
+  		write_color_ramp_style(@testfile.openfile, num_styles)
   		@testfile.openfile.close
-  		styles = File.open("kmltestfile.kml", "rb").read.scan('<Style')
-  		styles.count.should eq(9)
+  		styles = File.open("kmltestfile.kml", "rb").read.scan(/<Style id="c_ramp_style_(\d)"/)
+  		styles.collect{|id| id[0].to_i}.should == (0..num_styles-1).to_a.reverse
+  	end
 
+  	it "can write a random color scheme" do
+  		num_styles = 10
+  		generate_random_styles(@testfile.openfile, num_styles)
+  		@testfile.openfile.close
+  		
+  		styles = File.open("kmltestfile.kml", "rb").read.scan(/<Style id="r_style_(\d)"/)
+  		styles.collect{|id| id[0].to_i}.should == (0..num_styles-1).to_a
   	end
 end
