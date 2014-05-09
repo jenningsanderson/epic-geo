@@ -16,9 +16,9 @@ Most of the functionality within this gem requires access to project EPIC's NoSQ
  	- ```geo_ruby/kml``` is also currently required.
 
 ###Installation
-Pull the latest version of the gem from github: 
+(Recommended) Pull the latest version of the gem from github: 
   1. Put the following line in your Gemfile: ```gem 'epic-geo', github: 'jenningsanderson/epic-geo'```
   2. Run ```bundle install```
 
-Other:
+Via RubyGems (Latest stable build):
 ```gem install epic-geo```
