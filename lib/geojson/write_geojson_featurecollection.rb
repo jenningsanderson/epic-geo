@@ -4,6 +4,7 @@ Write a geojson feature collection
 require 'json'
 
 class GeoJSONWriter
+
   attr_reader :filename
 
   def initialize(filename)

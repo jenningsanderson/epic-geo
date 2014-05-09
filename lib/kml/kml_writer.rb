@@ -1,8 +1,16 @@
 require 'time'
+require 'geo_ruby/kml' #Allows writing of georuby geometry objects to kml format
 
+#TODO: The geometry should come in as geojson, I want to do away with all external dependencies
+#      except for explicit calculations with rgeo.
+
+#Require the helper functions for writing the styles to the KML file
 require_relative 'kml_style_helper'
 
 class KMLAuthor
+  
+  attr_reader :filename, :openfile
+  
   def initialize(filename)
     @filename = filename.dup #Getting weird frozen error...
     unless @filename =~ /\.kml$/
@@ -11,12 +19,14 @@ class KMLAuthor
     @openfile = File.open(@filename, 'w')
   end
 
+  #Write the KML header information and give the the file a name
   def write_header(title)
     @openfile.write "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
     @openfile.write "<kml xmlns=\"http://earth.google.com/kml/2.1\">\n"
     @openfile.write "<Document>\n<name>#{title}</name>\n\n"
   end
 
+  #The main workhorse -- a beautiful recursive function (if I may say so) to write folders to the document
   def write_folder(folder)
     @openfile.write "<Folder>\n<name>#{folder[:name]}</name>\n"
 
@@ -34,6 +44,7 @@ class KMLAuthor
     @openfile.write "</Folder>\n\n"
   end
 
+  #Each placemark can be thought of as a feature in a geojson collection, there are many options, certainly not 
   def write_placemark(feature)
     @openfile.write "<Placemark>\n"
     unless feature[:name].nil?
@@ -72,25 +83,14 @@ class KMLAuthor
     end
 
     unless feature[:geometry].nil?
-      @openfile.write "\t"+feature[:geometry].as_kml
+      @openfile.write "\t"+feature[:geometry].as_kml #What type of geometry do we need here?
     end
     @openfile.write "</Placemark>\n\n"
   end
 
-
+  #Properly close the kml file
   def write_footer
     @openfile.write("\n</Document>\n</kml>")
-  end
-
-  #Below here is only style information
-  def add_style(style)
-    @openfile.write "<Style id=\"#{style[:id]}\">"
-    if style.has_key? :polygon
-      @openfile.write "<PolyStyle>"
-      @openfile.write "\t<color>#{style[:polygon][:color]}</color>"
-      @openfile.write "</PolyStyle>"
-    end
-    @openfile.write "</Style>"
   end
 
 end
