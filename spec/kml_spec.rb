@@ -1,19 +1,27 @@
 require "spec_helper"
 
 describe KMLAuthor do
-	before :all do
-		@testfile = KMLAuthor.new('testfile')
+	before :each do
+		@testfile = KMLAuthor.new('kmltestfile')
 	end
 
-	after :all do
-	 	File.delete('testfile.kml')
+	after :each do
+	 	File.delete('kmltestfile.kml')
 	end
 	
-	it "Successfully names it appropriately" do
-    	@testfile.filename.should == 'testfile.kml'
+	it "successfully names it appropriately" do
+    	@testfile.filename.should == 'kmltestfile.kml'
   	end
 
-  	it "Successfully Opens file" do
-  		expect(File).to exist('testfile.kml')
+  	it "successfully Opens file" do
+  		expect(File).to exist('kmltestfile.kml')
+  	end
+
+  	it "can write random styles" do
+  		write_color_ramp_style(@testfile.openfile, 9)
+  		@testfile.openfile.close
+  		styles = File.open("kmltestfile.kml", "rb").read.scan('<Style')
+  		styles.count.should eq(9)
+
   	end
 end

@@ -12,13 +12,13 @@ def random_hex_color
   (0..5).map{ rand(16).to_s(16) }.join
 end
 
-def write_color_ramp_style(number_of_styles)
+def write_color_ramp_style(current_file, number_of_styles)
 
   #Base color:
   base_color = '7714E7FF'
   step = 256/number_of_styles
 
-  vals = (0..number_of_styles).to_a.reverse
+  vals = (1..number_of_styles).to_a.reverse
   vals.each do |id|
     val = (id*step).to_s(16)
     val.upcase!
@@ -28,14 +28,14 @@ def write_color_ramp_style(number_of_styles)
     color = base_color[0..3]+val+base_color[6..7]
 
     #Open the Style
-    @openfile.write "<Style id=\"c_ramp_style_#{id-1}\">\n"
-    @openfile.write %Q{\t<LabelStyle>
+    current_file.write "<Style id=\"c_ramp_style_#{id-1}\">\n"
+    current_file.write %Q{\t<LabelStyle>
       <scale>0</scale>
   </LabelStyle>
     }
 
     #Point
-    @openfile.write %Q{\t<IconStyle>
+    current_file.write %Q{\t<IconStyle>
       <color>#{color}</color>
        <scale>.3</scale>
        <Icon>http://maps.google.com/mapfiles/kml/paddle/wht-blank-lv.png</Icon>
@@ -45,20 +45,20 @@ def write_color_ramp_style(number_of_styles)
   </IconStyle>\n}
 
     #Line
-    @openfile.write %Q{\t<LineStyle>
+    current_file.write %Q{\t<LineStyle>
       <color>#{color}</color>
       <width>1.5</width>
   </LineStyle>\n}
 
     #Poly
-    @openfile.write %Q{\t<PolyStyle>
+    current_file.write %Q{\t<PolyStyle>
       <color>#{color}</color>
       <BalloonStyle>
         <text>&lt;h1&gt;$[name]&lt;/h1&gt;$[description]</text>
         <bgColor>ffd5efff</bgColor>
       </BalloonStyle>
   </PolyStyle>\n}
-    @openfile.write "</Style>\n\n"
+    current_file.write "</Style>\n\n"
   end
 end
 
