@@ -1,10 +1,7 @@
 '''
 Write a geojson feature collection
 '''
-
-require 'mongo'
 require 'json'
-require 'optparse'
 
 class GeoJSONWriter
   attr_reader :filename

@@ -4,15 +4,18 @@ Gem::Specification.new do |s|
   s.platform          = Gem::Platform::RUBY
   s.authors           = ["Jennings Anderson"]
   s.email             = ["jennings.anderson@colorado.edu"]
-  s.homepage          = "http://github.com/goncalossilva/gem_template"
+  s.homepage          = "http://github.com/jenningsanderson/epic-geo"
   s.summary           = "Gems for handling Project EPIC geo data"
   s.description       = "Series of Ruby Scripts for dealing with Geo data.  Much more to come"
   s.rubyforge_project = s.name
 
-  s.required_rubygems_version = ">= 1.3.6"
+  #s.required_rubygems_version = ">= 1.3.6"
 
   # If you have runtime dependencies, add them here
   # s.add_runtime_dependency "other", "~> 1.2"
+  s.add_runtime_dependency "json"
+  s.add_runtime_dependency "time"
+  s.add_runtime_dependency "rgeo" #This is an important dependency to allow the geo calculations
 
   # It will need all sorts of dependencies such as rgeo, ruby/gems, etc...
 
