@@ -1,6 +1,4 @@
 require 'time'
-#require 'georuby'
-#require 'geo_ruby/kml'
 
 require_relative 'kml_style_helper'
 
