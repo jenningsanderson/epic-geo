@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name              = "epic-geo"
-  s.version           = "0.0.2"
+  s.version           = "0.0.3"
   s.platform          = Gem::Platform::RUBY
   s.authors           = ["Jennings Anderson"]
   s.email             = ["jennings.anderson@colorado.edu"]
@@ -15,8 +15,6 @@ Gem::Specification.new do |s|
   # s.add_runtime_dependency "other", "~> 1.2"
   s.add_runtime_dependency "json"
   s.add_runtime_dependency "rgeo" #This is an important dependency to allow the geo calculations
-  s.add_runtime_dependency "geo_ruby/kml" #I want to get rid of this as soon as possible
-
   # It will need all sorts of dependencies such as rgeo, ruby/gems, etc...
 
   # If you have development dependencies, add them here
