@@ -1,3 +1,7 @@
+def random_hex_color
+  (0..5).map{ rand(16).to_s(16) }.join
+end
+
 def generate_random_styles(current_file, number_of_styles)
   number_of_styles.times do |id|
     #Generate a random hex color

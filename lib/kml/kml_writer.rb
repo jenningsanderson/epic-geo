@@ -93,7 +93,4 @@ class KMLAuthor
     @openfile.write "</Style>"
   end
 
-  def random_hex_color
-    (0..5).map{ rand(16).to_s(16) }.join
-  end
 end
