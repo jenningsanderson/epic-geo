@@ -1,4 +1,5 @@
 require 'time'
+require 'georuby'
 require 'geo_ruby/kml' #Allows writing of georuby geometry objects to kml format
 
 #TODO: The geometry should come in as geojson, I want to do away with all external dependencies
