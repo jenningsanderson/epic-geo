@@ -14,7 +14,6 @@ Gem::Specification.new do |s|
   # If you have runtime dependencies, add them here
   # s.add_runtime_dependency "other", "~> 1.2"
   s.add_runtime_dependency "json"
-  s.add_runtime_dependency "time"
   s.add_runtime_dependency "rgeo" #This is an important dependency to allow the geo calculations
 
   # It will need all sorts of dependencies such as rgeo, ruby/gems, etc...
