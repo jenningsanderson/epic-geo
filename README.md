@@ -16,9 +16,8 @@ Most of the functionality within this gem requires access to project EPIC's NoSQ
 
 ###Installation
 Pull from Github for latest version of gem
-1. Put the following line in your Gemfile:
-```gem 'epic-geo' ,github: 'jenningsanderson/epic-geo'```
-2. Run ```bundle install```
+  1. Put the following line in your Gemfile: ```gem 'epic-geo' ,github: 'jenningsanderson/epic-geo'```
+  2. Run ```bundle install```
 
 Other:
 ```gem install epic-geo```
