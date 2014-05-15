@@ -10,6 +10,7 @@ def add_style(current_file, style)
     current_file.write %Q{<IconStyle>
     <Icon>http://maps.google.com/mapfiles/kml/paddle/wht-blank-lv.png</Icon>
     <color>#{style[:point][:color]}</color>
+    <LabelStyle><scale>#{style[:point][:text]}</scale></LabelStyle>
   </IconStyle>
 }
   end
