@@ -1,9 +1,17 @@
 def add_style(current_file, style)
   current_file.write "<Style id=\"#{style[:id]}\">"
   if style.has_key? :polygon
-    current_file.write "<PolyStyle>"
-    current_file.write "\t<color>#{style[:polygon][:color]}</color>"
-    current_file.write "</PolyStyle>"
+    current_file.write %Q{<PolyStyle>
+    <color>#{style[:polygon][:color]}</color>"
+    </PolyStyle>
+}
+  end
+  if style.has_key? :point
+    current_file.write %Q{<IconStyle>
+    <Icon>http://maps.google.com/mapfiles/kml/paddle/wht-blank-lv.png</Icon>
+    <color>#{style[:point][:color]}</color>
+  </IconStyle>
+}
   end
   current_file.write "</Style>"
 end
