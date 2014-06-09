@@ -15,14 +15,18 @@ class GeoJSONWriter
     @open_file = File.open(@filename, 'w')
   end
 
-  def add_options(options_hash)
-    @options = options_hash
+  def add_options(options_array)
+    @options = options_array
   end
 
   def write_header
     @open_file.write "{\"type\" : \"FeatureCollection\","
     unless @options.nil?
-      @open_file.write @options.to_json
+      @options.each do |option|
+        opt_string = option.to_json.to_s
+        @open_file.write opt_string[1..-2]
+        @open_file.write(',')
+      end
     end
     @open_file.write "\"features\" :["
   end
