@@ -107,7 +107,7 @@ def generate_random_styles(current_file, number_of_styles)
   end
 end
 
-def write_3_bin_styles
+def write_3_bin_styles(current_file)
   current_file.write %Q{
   <Style id="before">
     <IconStyle>

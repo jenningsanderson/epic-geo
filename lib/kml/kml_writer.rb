@@ -35,12 +35,13 @@ class KMLAuthor
       folder[:folders].each do |inner_folder|
         write_folder(inner_folder)
       end
-    else
-      unless folder[:features].empty?
-        folder[:features].each do |feature|
-          write_placemark(feature)
-        end
+    end#else
+    
+    unless folder[:features].empty?
+      folder[:features].each do |feature|
+        write_placemark(feature)
       end
+  #  end
     end
     @openfile.write "</Folder>\n\n"
   end
