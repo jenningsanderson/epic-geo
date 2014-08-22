@@ -29,7 +29,7 @@ describe HTML_Writer do
   		end
 
   		#Write nav items
-  		@testfile.write_navigation
+  		@testfile.write_navigation("Test title")
 
   		#Write content
   		@testfile.write_content
