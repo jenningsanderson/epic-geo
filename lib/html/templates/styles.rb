@@ -21,8 +21,13 @@ BASIC_STYLES = %Q{
 	list-style-type: none;
 \}
 
+tr.table_row_1 \{
+	background-color: #DDD
+\}
 
-
+tr.table_row_2 \{
+	background-color: #EEE
+\}
 
 
 }

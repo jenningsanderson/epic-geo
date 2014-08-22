@@ -39,9 +39,10 @@ class HTML_Writer
 		@openfile.write "</style>"
 	end
 
-	def write_navigation
+	def write_navigation(title)
 		@openfile.write %Q{
 	<div id="nav_div">
+		<h2>#{title}</h2>
 		<ul>
 
 }
@@ -86,8 +87,8 @@ class HTML_Writer
 		end
 		@openfile.write "</tr>"
 
-		table_data.each do |hash|
-			@openfile.write "<tr>\n"
+		table_data.each_with_index do |hash, index|
+			@openfile.write "<tr class=\"table_row_#{index%2}\">\n"
 			hash.each do |k,v|
 				@openfile.write "<td>#{v}</td>"
 			end
