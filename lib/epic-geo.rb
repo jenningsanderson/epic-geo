@@ -5,6 +5,7 @@ class EpicGeo
 	require_relative 'kml/kml_writer'
 	require_relative 'geojson/write_geojson_featurecollection'
 	require_relative 'html/html_writer'
+	require_relative 'html/archive_maker'
 
 	def self.hi
 		puts "Hello world!"
