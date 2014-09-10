@@ -15,7 +15,7 @@ class WebPage
 		@openfile = File.open(@page_path,'w')
 	end
 
-	def write_header(page_name, styles=['css/styles.css'], scripts=[])
+	def write_header(page_name, styles=[], scripts=[])
 		@openfile.write (
 			%Q{<html>
 	<head>

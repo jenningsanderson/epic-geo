@@ -39,7 +39,11 @@ class HTMLArchiveMaker
 		if kml
 			kml_scripts=["https://www.google.com/jsapi"]
 		end
-		this_file.write_header(user, scripts=kml_scripts)
+		this_file.write_header(
+			user, 
+			styles=["css/styles.css"], 
+			scripts=kml_scripts
+		)
 		this_file.add_home_button
 		this_file.h1 user
 		unless kml.nil?
