@@ -31,7 +31,7 @@ class HTMLArchiveMaker
 		@dir_contents = []
 	end
 
-	def add_user_page(user, contents)
+	def add_user_page(user, contents, kml=nil)
 		this_file = UserPage.new(user+'.html', @dir_path)
 		
 		@dir_contents << {:name=>user, :file=>this_file.filename}
@@ -39,6 +39,9 @@ class HTMLArchiveMaker
 		this_file.write_header(user)
 		this_file.add_home_button
 		this_file.h1 user
+		unless kml.nil?
+			this_file.write_link("KML File", kml)
+		end
 
 		this_file.add_content(contents)
 

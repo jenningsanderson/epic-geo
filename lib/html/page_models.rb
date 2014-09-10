@@ -93,6 +93,10 @@ class WebPage
 		@openfile.write '<a id="back_button" href="index.html"><< Back</a>' 
 	end
 
+	def write_link(text,href,_class="link")
+		@openfile.write '<a class="#{_class}" href="#{href}">#{text}</a>'
+	end
+
 
 	def method_missing(method, *args)
 		@openfile.write(
