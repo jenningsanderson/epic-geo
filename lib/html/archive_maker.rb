@@ -50,7 +50,7 @@ class HTMLArchiveMaker
 
 	def write_index
 		index = Homepage.new(@dir_path)
-		index.write_header("Users to Code")
+		index.write_header("Users to Code", scripts=["https://www.google.com/jsapi"])
 		index.h1 "Users to Code"
 		index.p "The full contextual streams for these users along with small interactive maps of their storm migration activities is available under the links to the left."
 

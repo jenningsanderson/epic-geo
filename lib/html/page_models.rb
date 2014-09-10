@@ -15,7 +15,7 @@ class WebPage
 		@openfile = File.open(@page_path,'w')
 	end
 
-	def write_header(page_name, styles=['css/styles.css'])
+	def write_header(page_name, styles=['css/styles.css'], scripts=[])
 		@openfile.write (
 			%Q{<html>
 	<head>
@@ -23,6 +23,10 @@ class WebPage
 		})
 		styles.each do |style|
 			@openfile.write %Q{<link rel="stylesheet" type="text/css" href="#{style}" /> }
+		end
+
+		scripts.each do |script|
+			@openfile.write %Q{<script type="text/javascript" src="#{script}"></script>}
 		end
 
 		@openfile.write (
