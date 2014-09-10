@@ -122,7 +122,7 @@ end
 
 class UserPage < WebPage
 
-	def add_google_earth
+	def add_google_earth(link)
 		@openfile.write %Q{<script type="text/javascript">
 	    	var ge;
 	    	google.load("earth", "1", {"other_params":"sensor=true_or_false"});
@@ -138,6 +138,15 @@ class UserPage < WebPage
 
 	    	function failureCB(errorCode) {
 	    	}
+
+	    	var link = ge.createLink('');
+			var href = "#{link}"
+			link.setHref(href);
+
+			var networkLink = ge.createNetworkLink('');
+			networkLink.set(link, true, true); // Sets the link, refreshVisibility, and flyToView
+
+			ge.getFeatures().appendChild(networkLink);
 
 	    	google.setOnLoadCallback(init);
   		</script>

@@ -48,7 +48,7 @@ class HTMLArchiveMaker
 		this_file.h1 user
 		unless kml.nil?
 			this_file.write_link("KML File", kml)
-			this_file.add_google_earth
+			this_file.add_google_earth(kml)
 		end
 
 		this_file.add_content(contents)
