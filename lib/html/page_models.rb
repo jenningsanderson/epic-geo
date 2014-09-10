@@ -131,19 +131,47 @@ class UserPage < WebPage
 	      		google.earth.createInstance('map3d', initCB, failureCB);
 	    	}
 
+	    	function getKML(link_in){
+				var parent_dir = document.URL.substr(0,document.URL.lastIndexOf('/'))
+				return parent_dir + "/" + link_in
+	    	}
+
 	    	function initCB(instance) {
 	      		ge = instance;
          		ge.getWindow().setVisibility(true);
 
+	      		var networkLink = ge.createNetworkLink('');
 	      		var link = ge.createLink('');
-				var href = '#{link}'
+				var href = getKML("#{link}")
+
+				//var href = "file:///Users/jenningsanderson/Documents/Twitter-Evacutation-Patterns/cloud_export/users_to_code/kml_files/fernanjos.kml"
+
+				var href="file:///Users/jenningsanderson/Documents/Twitter-Evacutation-Patterns/cloud_export/users_to_code/kml_files/dogukanbiyik.kml"
+				
+				alert(href)
+
 				link.setHref(href);
 
 
-				var networkLink = ge.createNetworkLink('');
+
         		networkLink.set(link, true, true); // Sets the link, refreshVisibility, and flyToView.
 
         		ge.getFeatures().appendChild(networkLink);
+			
+				
+				/*
+        		var link = ge.createLink('');
+				var href = 'http://code.google.com/'
+				           + 'apis/earth/documentation/samples/kml_example.kml'
+				link.setHref(href);
+
+				var networkLink = ge.createNetworkLink('');
+				networkLink.set(link, true, true); // Sets the link, refreshVisibility, and flyToView
+
+				ge.getFeatures().appendChild(networkLink);
+
+				*/
+
       		}
 
       		function failureCB(errorCode) {
