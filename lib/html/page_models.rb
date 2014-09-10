@@ -122,4 +122,26 @@ end
 
 class UserPage < WebPage
 
+	def add_google_earth
+		@openfile.write %Q{<script type="text/javascript">
+	    	var ge;
+	    	google.load("earth", "1", {"other_params":"sensor=true_or_false"});
+
+	    	function init() {
+	      	google.earth.createInstance('map3d', initCB, failureCB);
+	    	}
+
+	    	function initCB(instance) {
+	      		ge = instance;
+	      		ge.getWindow().setVisibility(true);
+	    	}
+
+	    	function failureCB(errorCode) {
+	    	}
+
+	    	google.setOnLoadCallback(init);
+  		</script>
+
+  		<div id="map3d" style="height: 400px; width: 600px;"></div>}
+  	end
 end
