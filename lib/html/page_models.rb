@@ -136,7 +136,7 @@ class UserPage < WebPage
          		ge.getWindow().setVisibility(true);
 
 	      		var link = ge.createLink('');
-				var href = '#{link}''
+				var href = '#{link}'
 				link.setHref(href);
 
 
