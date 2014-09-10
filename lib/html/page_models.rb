@@ -134,19 +134,19 @@ class UserPage < WebPage
 	    	function initCB(instance) {
 	      		ge = instance;
 	      		ge.getWindow().setVisibility(true);
+
+	      		var link = ge.createLink('');
+				var href = "#{link}"
+				link.setHref(href);
+
+				var networkLink = ge.createNetworkLink('');
+				networkLink.set(link, true, true); // Sets the link, refreshVisibility, and flyToView
+
+				ge.getFeatures().appendChild(networkLink);
 	    	}
 
 	    	function failureCB(errorCode) {
 	    	}
-
-	    	var link = ge.createLink('');
-			var href = "#{link}"
-			link.setHref(href);
-
-			var networkLink = ge.createNetworkLink('');
-			networkLink.set(link, true, true); // Sets the link, refreshVisibility, and flyToView
-
-			ge.getFeatures().appendChild(networkLink);
 
 	    	google.setOnLoadCallback(init);
   		</script>
