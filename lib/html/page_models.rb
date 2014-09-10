@@ -140,14 +140,15 @@ class UserPage < WebPage
 	      		ge = instance;
          		ge.getWindow().setVisibility(true);
 
+         		ge.getTime().getControl().setVisibility(ge.VISIBILITY_SHOW);
+
 	      		var networkLink = ge.createNetworkLink('');
 
         		var link = ge.createLink('');
-				var href = getKML(#{link});
-				
+				var href = getKML("#{link}");
+
 				link.setHref(href);
 
-				var networkLink = ge.createNetworkLink('');
 				networkLink.set(link, true, true); // Sets the link, refreshVisibility, and flyToView
 
 				ge.getFeatures().appendChild(networkLink);
