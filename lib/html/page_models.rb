@@ -125,30 +125,31 @@ class UserPage < WebPage
 	def add_google_earth(link)
 		@openfile.write %Q{<script type="text/javascript">
 	    	var ge;
-	    	google.load("earth", "1", {"other_params":"sensor=true_or_false"});
+	    	google.load("earth", "1", {"other_params":"sensor=false"});
 
 	    	function init() {
-	      	google.earth.createInstance('map3d', initCB, failureCB);
+	      		google.earth.createInstance('map3d', initCB, failureCB);
 	    	}
 
 	    	function initCB(instance) {
 	      		ge = instance;
-	      		ge.getWindow().setVisibility(true);
+         		ge.getWindow().setVisibility(true);
 
 	      		var link = ge.createLink('');
 				var href = "#{link}"
 				link.setHref(href);
 
+
 				var networkLink = ge.createNetworkLink('');
-				networkLink.set(link, true, true); // Sets the link, refreshVisibility, and flyToView
+        		networkLink.set(link, true, true); // Sets the link, refreshVisibility, and flyToView.
 
-				ge.getFeatures().appendChild(networkLink);
-	    	}
+        		ge.getFeatures().appendChild(networkLink);
+      		}
 
-	    	function failureCB(errorCode) {
-	    	}
+      		function failureCB(errorCode) {
+      		}
 
-	    	google.setOnLoadCallback(init);
+      		google.setOnLoadCallback(init);
   		</script>
 
   		<div id="map3d" style="height: 400px; width: 600px;"></div>}
