@@ -22,9 +22,13 @@ class KMLAuthor
 
   #Write the KML header information and give the the file a name
   def write_header(title)
-    @openfile.write "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
-    @openfile.write "<kml xmlns=\"http://earth.google.com/kml/2.1\">\n"
-    @openfile.write "<Document>\n<name>#{title}</name>\n\n"
+    @openfile.write %Q{<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document>
+  <name>
+    #{title}
+  </name>
+  }
   end
 
   #The main workhorse -- a beautiful recursive function (if I may say so) to write folders to the document

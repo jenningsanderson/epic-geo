@@ -141,28 +141,10 @@ class UserPage < WebPage
          		ge.getWindow().setVisibility(true);
 
 	      		var networkLink = ge.createNetworkLink('');
-	      		var link = ge.createLink('');
-				var href = getKML("#{link}")
 
-				//var href = "file:///Users/jenningsanderson/Documents/Twitter-Evacutation-Patterns/cloud_export/users_to_code/kml_files/fernanjos.kml"
-
-				var href="file:///Users/jenningsanderson/Documents/Twitter-Evacutation-Patterns/cloud_export/users_to_code/kml_files/dogukanbiyik.kml"
-				
-				alert(href)
-
-				link.setHref(href);
-
-
-
-        		networkLink.set(link, true, true); // Sets the link, refreshVisibility, and flyToView.
-
-        		ge.getFeatures().appendChild(networkLink);
-			
-				
-				/*
         		var link = ge.createLink('');
-				var href = 'http://code.google.com/'
-				           + 'apis/earth/documentation/samples/kml_example.kml'
+				var href = getKML(#{link});
+				
 				link.setHref(href);
 
 				var networkLink = ge.createNetworkLink('');
@@ -170,7 +152,6 @@ class UserPage < WebPage
 
 				ge.getFeatures().appendChild(networkLink);
 
-				*/
 
       		}
 
