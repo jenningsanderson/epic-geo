@@ -32,7 +32,7 @@ describe HTML_Writer do
   # 		@testfile.write_content
   		
   # 		@testfile.close_file
-      return nil
+    puts "Unimplemented"
   	end
 
 end
