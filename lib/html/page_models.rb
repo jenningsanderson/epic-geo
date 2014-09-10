@@ -94,7 +94,7 @@ class WebPage
 	end
 
 	def write_link(text,href,_class="link")
-		@openfile.write '<a class="#{_class}" href="#{href}">#{text}</a>'
+		@openfile.write %Q{<a class="#{_class}" href="#{href}">#{text}</a>}
 	end
 
 
