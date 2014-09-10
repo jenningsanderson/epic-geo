@@ -162,6 +162,6 @@ class UserPage < WebPage
       		google.setOnLoadCallback(init);
   		</script>
 
-  		<div id="map3d" style="height: 400px; width: 600px;"></div>}
+  		<div id="map3d"></div>}
   	end
 end
