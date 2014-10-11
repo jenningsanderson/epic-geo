@@ -20,5 +20,4 @@ RSpec.configure do |config|
   config.order = 'random'
 end
 
-#Require the gem
-require "epic-geo"
+require 'lib/epic_geo'

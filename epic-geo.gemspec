@@ -1,12 +1,12 @@
 Gem::Specification.new do |s|
   s.name              = "epic_geo"
-  s.version           = "0.2.1"
+  s.version           = "0.3.1"
   s.platform          = Gem::Platform::RUBY
   s.authors           = ["Jennings Anderson"]
   s.email             = ["jennings.anderson@colorado.edu"]
   s.homepage          = "http://github.com/jenningsanderson/epic-geo"
-  s.summary           = "Gems for handling Project EPIC geo data"
-  s.description       = "Series of Ruby Scripts for dealing with Geo data.  Much more to come"
+  s.summary           = "A Gem for Handling Geo Data (Predominately Tweets)"
+  s.description       = "The Gem is optimized to work with Project EPIC data at University of Colorado Boulder, but I've attempted to write it as general as possible"
   s.rubyforge_project = s.name
 
   #s.required_rubygems_version = ">= 1.3.6"

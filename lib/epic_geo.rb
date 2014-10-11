@@ -36,4 +36,6 @@ module EpicGeo
 	require_relative  'epic_geo/writers/google_drive/google_sheets'
 
 	require_relative  'epic_geo/writers/html/archive_maker'
+
+	require_relative  'epic_geo/writers/kml/kml_writer'
 end

@@ -1,5 +1,7 @@
 require "spec_helper"
 
+include EpicGeo::Writers
+
 describe GeoJSONWriter do
 	before :each do
 		@testfile = GeoJSONWriter.new('geojsontestfile')
@@ -11,7 +13,7 @@ describe GeoJSONWriter do
 	end
 	
 	it "Successfully names it appropriately" do
-    	@testfile.filename.should == 'geojsontestfile.geojson'
+    	expect @testfile.filename == 'geojsontestfile.geojson'
   	end
 
   	it "Successfully creates file" do

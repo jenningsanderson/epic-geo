@@ -4,7 +4,6 @@
 # Helper file for rspec tests
 #
 
-
 require 'pp'
 require 'rgeo'
 
