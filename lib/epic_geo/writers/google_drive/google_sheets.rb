@@ -71,7 +71,7 @@ module EpicGeo
 					ws_name = args[:title] || Time.now.to_s
 					puts "Making new worksheet: #{ws_name}"
 					user_sheet = SingleSheet.new( sheet.add_worksheet(ws_name), args[:headers] )
-					add_worksheet_to_toc([ws_name, user_sheet.link])
+					add_worksheet_to_toc([ws_name, user_sheet.link(ws_name)])
 					return user_sheet
 				end
 
@@ -113,8 +113,8 @@ module EpicGeo
 					ws.save
 				end
 
-				def link
-					""
+				def link(name) #Hardcoded for now, lets fix this later!
+					"http://s3.amazonaws.com/epic-twitter-evac/#{name}.html"
 				end
 
 				def add_tweet(tweet)
