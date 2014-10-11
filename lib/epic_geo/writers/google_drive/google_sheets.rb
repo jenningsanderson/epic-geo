@@ -42,7 +42,7 @@ module EpicGeo
 		module GoogleDrive
 			class SheetMaker < GoogleDriveAccess
 
-				attr_reader :sheet, :filename
+				attr_reader :sheet, :filename, :toc_row_index, :toc
 
 				def initialize(args)
 					super(args) #Call the abstract class to set instance variables
@@ -51,11 +51,36 @@ module EpicGeo
 					collection.add(@sheet)				#Add it to the collection
 					@filename = args[:name] || Time.now.to_s
 					@sheet.title = filename
+
+					create_toc(args[:toc_headers])
 				end
 
-				def add_worksheet(ws_name = Time.now.to_s) #Must pass a name to the worksheet
+				def create_toc(headers)
+					@toc = sheet.worksheets[0]
+					toc.title="TOC"
+					@toc_row_index = 5
+					headers ||= ['Handle','Link']
+					headers.each_with_index do |header, index|
+						toc[toc_row_index,index+1] = header
+					end
+					@toc_row_index += 1
+					toc.save
+				end
+
+				def add_worksheet(args) #Must pass a name to the worksheet
+					ws_name = args[:title] || Time.now.to_s
 					puts "Making new worksheet: #{ws_name}"
-					SingleSheet.new( sheet.add_worksheet(ws_name) )
+					user_sheet = SingleSheet.new( sheet.add_worksheet(ws_name), args[:headers] )
+					add_worksheet_to_toc([ws_name, user_sheet.link])
+					return user_sheet
+				end
+
+				def add_worksheet_to_toc(args)
+					args.each_with_index do |column_val, index|
+						toc[toc_row_index, index+1] = column_val
+					end
+					@toc_row_index += 1
+					toc.save
 				end
 
 				def clear_codes #Warning! Destructive! #Hardcoded too!  Dangerous!
@@ -74,17 +99,22 @@ module EpicGeo
 
 				attr_reader :ws, :row_index
 				
-				def initialize(worksheet)
+				def initialize(worksheet, headers)
 					@ws = worksheet
 					@row_index = 1
-					write_headers
+					write_headers(headers)
 				end
 
-				def write_headers(headers=["Date", "Text", "Geo"])
+				def write_headers(headers)
+					headers ||= ["Date", "Geo", "Text"]
 					headers.each_with_index do |header, index|
 						ws[1, index+1] = header 
 					end
 					ws.save
+				end
+
+				def link
+					""
 				end
 
 				def add_tweet(tweet)
