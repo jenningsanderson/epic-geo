@@ -4,10 +4,16 @@ require 'rgeo'
 
 module EpicGeo
 
+	# A helper function to convert a point to epic-KML
+	def point_as_epic_kml(name, x, y, style=nil)
+			{ 	name:  name,
+				style: style,
+		  		geometry: GeoRuby::SimpleFeatures::Point.from_coordinates([x,y]) 
+		  	 }
+	end
+
 
 	#TODO: Build a better query iterator that doesn't time out
-
-
 
 
 	# The only dependency of this module is for the Twitterer to have a collection of tweets
@@ -166,20 +172,20 @@ module EpicGeo
   		end
 
  		#To write the tweet to a kml file from epic-geo,
-  		# it must be formatted as follows:
-		# def as_epic_kml(style=nil)
-		# {:time     => @date,
-		#  :style    => style,
-		#  :geometry => GeoRuby::SimpleFeatures::Point.from_x_y(
-		#    @coordinates["coordinates"][0],
-		#    @coordinates["coordinates"][1] ),
-		#  :name     => nil, #Setting name to nil because otherwise it's hard to see
-		#  :desc     =>
-		#  %Q{#{@handle}<br />
-		#     #{@text}<br />
-		#     #{@date}}
-		# }
-		# end
+  		#it must be formatted as follows:
+		def as_epic_kml(style=nil)
+		{:time     => date,
+		 :style    => style,
+		 :geometry => GeoRuby::SimpleFeatures::Point.from_x_y(
+		   coordinates["coordinates"][0],
+		   coordinates["coordinates"][1] ),
+		 :name     => nil, #Setting name to nil because otherwise it's hard to see
+		 :desc     =>
+		 %Q{#{@handle}<br />
+		    #{@text}<br />
+		    #{@date}}
+		}
+		end
 
   		#Return this tweet as valid GeoJSON
   		def as_geojson
@@ -191,13 +197,5 @@ module EpicGeo
      		 	geometry: coordinates
      		 }
   		end
-
-  			# A helper function to convert a point to epic-KML
-		def point_as_epic_kml(name, x, y, style=nil)
-			{ 	name:  name,
-				style: style,
-		  		geometry: GeoRuby::SimpleFeatures::Point.from_coordinates([x,y]) 
-		  	 }
-		end
 	end
 end
