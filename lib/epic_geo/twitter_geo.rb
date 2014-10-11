@@ -4,6 +4,12 @@ require 'rgeo'
 
 module EpicGeo
 
+
+	#TODO: Build a better query iterator that doesn't time out
+
+
+
+
 	# The only dependency of this module is for the Twitterer to have a collection of tweets
 	module GeoTwitterer
 
@@ -22,8 +28,6 @@ module EpicGeo
 		def user_path
 			@userpath = factory.line_string(points)
 		end
-
-
 
 
 		# ------------------------- GeoJSON Functions -----------------------------#

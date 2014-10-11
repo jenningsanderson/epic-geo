@@ -1,4 +1,11 @@
+
+#These are the basic, basic requirements
 require 'rgeo'
+require 'rgeo-geojson'
+
+#Other Requirements (will be called lazily eventually)
+#google_drive
+#yaml
 
 module EpicGeo
 
@@ -17,12 +24,16 @@ module EpicGeo
 	require_relative 'epic_geo/geoprocessing/db_scan'
 	require_relative 'epic_geo/geoprocessing/k-means'
 
-
 	#Containers
 	require_relative 'epic_geo/bounding_boxes/container'
 
 
-	#I'd rather perform a lazy load for these, but I don't know how to handle these?
-	#Writers -- handle these later?
-	#autoload :GeoJSONWriter,          'epic_geo/writers/geojson/write_geojson_featurecollection
+	#Writers
+	#I'd rather perform a lazy load for these, but I don't know how to handle these? -- handle these later?
+	require_relative  'epic_geo/writers/geojson/write_geojson_featurecollection'
+
+	#This will throw an error if google_drive gem is not available, this should be done via lazy loading
+	require_relative  'epic_geo/writers/google_drive/google_sheets'
+
+	require_relative  'epic_geo/writers/html/archive_maker'
 end
