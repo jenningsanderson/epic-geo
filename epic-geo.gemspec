@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name              = "epic_geo"
-  s.version           = "1.0.0"
+  s.version           = "1.1.1"
   s.platform          = Gem::Platform::RUBY
   s.authors           = ["Jennings Anderson"]
   s.email             = ["jennings.anderson@colorado.edu"]
