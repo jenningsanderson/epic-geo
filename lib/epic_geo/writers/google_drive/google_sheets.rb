@@ -116,7 +116,7 @@ module EpicGeo
 				end
 			end
 
-			#=Handles a Single Sheet within a Workbook
+			# = Handles a Single Sheet within a Workbook
 			#
 			#This is just a basic wrapper on the google_drive gem to handle custom headers
 			class SingleSheet
@@ -147,12 +147,14 @@ module EpicGeo
 						ws[row_index, 1] = tweet[:Date]
 						ws[row_index, 2] = tweet[:Coordinates]
 						ws[row_index, 3] = tweet[:Text]
-						ws.save
+						Retryable.retryable do
+							ws.save
+						end
 						print "."
 					rescue => e
 						puts "Error writing this tweet: #{tweet}"
 						puts $!
-						puts e.backtrace
+						#puts e.backtrace
 					end
 				end
 
