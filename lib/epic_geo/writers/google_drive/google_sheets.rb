@@ -1,6 +1,5 @@
 require 'google_drive'
 
-
 #Abstract Authentication & Housekeeping class
 class GoogleDriveAccess
 	require 'yaml'
@@ -32,27 +31,42 @@ class GoogleDriveAccess
 		rescue => e
 			puts "Error logging in and accessing sheet!"
 			puts $!
+			puts e.backtrace
 			exit 1
 		end
 	end
 
 	def get_token
-		# Authorizes with OAuth and gets an access token.
-		client = Google::APIClient.new
-		auth = client.authorization
-		auth.client_id = credentials['google_oauth_id']
-		auth.client_secret = credentials['google_oauth_secret']
-		auth.scope =
-    		"https://www.googleapis.com/auth/drive " +
-    		"https://docs.google.com/feeds/ " +
-    		"https://docs.googleusercontent.com/ " +
-    		"https://spreadsheets.google.com/feeds/"
-		auth.redirect_uri = "urn:ietf:wg:oauth:2.0:oob"
-		print("1. Open this page:\n%s\n\n" % auth.authorization_uri)
-		print("2. Enter the authorization code shown in the page: ")
-		auth.code = $stdin.gets.chomp
-		auth.fetch_access_token!
-		return auth.access_token
+		client = OAuth2::Client.new(
+    		credentials['google_oauth_id'], credentials['google_oauth_secret'],
+    		:site => "https://accounts.google.com",
+    		:token_url => "/o/oauth2/token",
+    		:authorize_url => "/o/oauth2/auth"
+    	)
+		auth_url = client.auth_code.authorize_url(
+    		:redirect_uri => "urn:ietf:wg:oauth:2.0:oob",
+    		:scope =>
+        		"https://docs.google.com/feeds/ " +
+        		"https://docs.googleusercontent.com/ " +
+        		"https://spreadsheets.google.com/feeds/"
+        )
+
+		unless credentials['google_refresh_token'].nil?
+			auth_token = OAuth2::AccessToken.from_hash(client,
+    		{:refresh_token => credentials['google_refresh_token']})
+			auth_token = auth_token.refresh!
+		else
+			# Redirect the user to auth_url and get authorization code from redirect URL.
+			print("1. Open this page:\n%s\n\n" % auth_url)
+			print("2. Enter the authorization code shown in the page: ")
+			authorization_code = $stdin.gets.chomp
+			auth_token = client.auth_code.get_token(authorization_code, :redirect_uri => "urn:ietf:wg:oauth:2.0:oob")
+			credentials['google_refresh_token'] = auth_token.refresh_token
+			File.open(config['credentials'], 'w') do |file|
+				file.write credentials.to_yaml
+			end
+		end
+		return auth_token.token
 	end
 end
 
@@ -147,9 +161,7 @@ module EpicGeo
 						ws[row_index, 1] = tweet[:Date]
 						ws[row_index, 2] = tweet[:Coordinates]
 						ws[row_index, 3] = tweet[:Text]
-						Retryable.retryable do
-							ws.save
-						end
+						ws.save
 						print "."
 					rescue => e
 						puts "Error writing this tweet: #{tweet}"
