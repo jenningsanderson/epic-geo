@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>module EpicGeo::GeoTwitterer - RDoc Documentation</title>
+
+<link href="../fonts.css" rel="stylesheet">
+<link href="../rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../";
+</script>
+
+<script src="../js/jquery.js"></script>
+<script src="../js/navigation.js"></script>
+<script src="../js/search_index.js"></script>
+<script src="../js/search.js"></script>
+<script src="../js/searcher.js"></script>
+<script src="../js/darkfish.js"></script>
+
+
+<body id="top" role="document" class="module">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../table_of_contents.html#pages">Pages</a>
+    <a href="../table_of_contents.html#classes">Classes</a>
+    <a href="../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-i-coords_as_point">#coords_as_point</a>
+    
+    <li ><a href="#method-i-critical_points_to_json_hash">#critical_points_to_json_hash</a>
+    
+    <li ><a href="#method-i-full_median_point_json">#full_median_point_json</a>
+    
+    <li ><a href="#method-i-full_user_path_json">#full_user_path_json</a>
+    
+    <li ><a href="#method-i-individual_points_json">#individual_points_json</a>
+    
+    <li ><a href="#method-i-individual_tweets_json">#individual_tweets_json</a>
+    
+    <li ><a href="#method-i-point_to_geojson_hash">#point_to_geojson_hash</a>
+    
+    <li ><a href="#method-i-points">#points</a>
+    
+    <li ><a href="#method-i-points_to_geojson_linestring">#points_to_geojson_linestring</a>
+    
+    <li ><a href="#method-i-tweets_to_geojson">#tweets_to_geojson</a>
+    
+    <li ><a href="#method-i-user_path">#user_path</a>
+    
+    <li ><a href="#method-i-user_points">#user_points</a>
+    
+    <li ><a href="#method-i-userpath_as_epic_kml">#userpath_as_epic_kml</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="module-EpicGeo::GeoTwitterer">
+  <h1 id="module-EpicGeo::GeoTwitterer" class="module">
+    module EpicGeo::GeoTwitterer
+  </h1>
+
+  <section class="description">
+    
+<p>The only dependency of this module is for the Twitterer to have a
+collection of tweets</p>
+
+  </section>
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-coords_as_point" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">coords_as_point</span><span
+            class="method-args">(coordinates)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="coords_as_point-source">
+            <pre><span class="ruby-comment"># File lib/epic_geo/twitter_geo.rb, line 42</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">coords_as_point</span>(<span class="ruby-identifier">coordinates</span>)
+        <span class="ruby-constant">FACTORY</span>.<span class="ruby-identifier">point</span>(<span class="ruby-identifier">coordinates</span>[<span class="ruby-value">0</span>],<span class="ruby-identifier">coordinates</span>[<span class="ruby-value">1</span>])
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-critical_points_to_json_hash" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">critical_points_to_json_hash</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>TODO: Fix this</p>
+          
+          
+
+          
+          <div class="method-source-code" id="critical_points_to_json_hash-source">
+            <pre><span class="ruby-comment"># File lib/epic_geo/twitter_geo.rb, line 86</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">critical_points_to_json_hash</span>
+        <span class="ruby-identifier">geojson_hash</span> = {<span class="ruby-value">:type=</span><span class="ruby-operator">&gt;</span><span class="ruby-string">&quot;FeatureCollection&quot;</span>, <span class="ruby-value">:features=</span><span class="ruby-operator">&gt;</span>[]}
+
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">shelter_location</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">cluster_locations</span>[<span class="ruby-value">:before_home</span>]
+                <span class="ruby-identifier">geojson_hash</span>[<span class="ruby-value">:features</span>] <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">point_to_geojson_hash</span>( <span class="ruby-identifier">shelter_location</span>, {<span class="ruby-value">:Place=</span><span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;Shelter-In-Place Location&quot;</span>} )
+        <span class="ruby-keyword">else</span>
+                <span class="ruby-identifier">geojson_hash</span>[<span class="ruby-value">:features</span>] <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">point_to_geojson_hash</span>( <span class="ruby-identifier">cluster_locations</span>[<span class="ruby-value">:before_home</span>], {<span class="ruby-value">:Place=</span><span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;Before Home&quot;</span>} )
+                <span class="ruby-identifier">geojson_hash</span>[<span class="ruby-value">:features</span>] <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">point_to_geojson_hash</span>( <span class="ruby-identifier">shelter_location</span>, {<span class="ruby-value">:Place=</span><span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;Most Likely Shelter Location&quot;</span>} )
+        <span class="ruby-keyword">end</span>
+
+        <span class="ruby-comment">#Build the linestring from their cluster_pattern</span>
+        <span class="ruby-comment">#Get each cluster location by day (Only in the wanted window)</span>
+        <span class="ruby-identifier">cluster_path</span> = []
+        <span class="ruby-identifier">clusters_per_day</span>.<span class="ruby-identifier">sort_by</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">day</span>,<span class="ruby-identifier">clusters</span><span class="ruby-operator">|</span> <span class="ruby-identifier">day</span>.<span class="ruby-identifier">to_i</span>}.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">day</span>, <span class="ruby-identifier">cluster_ids</span><span class="ruby-operator">|</span>
+                <span class="ruby-keyword">unless</span> <span class="ruby-identifier">day</span>.<span class="ruby-identifier">to_i</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">300</span> <span class="ruby-keyword">or</span> <span class="ruby-identifier">day</span>.<span class="ruby-identifier">to_i</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">314</span>
+                        <span class="ruby-identifier">cluster_ids</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">cluster_id</span><span class="ruby-operator">|</span>
+                                <span class="ruby-identifier">cluster_path</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">cluster_locations</span>[<span class="ruby-identifier">cluster_id</span>]
+                        <span class="ruby-keyword">end</span>
+                <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">end</span>
+
+        <span class="ruby-identifier">geojson_hash</span>[<span class="ruby-value">:features</span>] <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">points_to_geojson_linestring</span>(<span class="ruby-identifier">cluster_path</span>, {<span class="ruby-value">:desc=</span><span class="ruby-operator">&gt;</span><span class="ruby-string">&quot;User Path: Oct 28 - Nov 9&quot;</span>})
+
+        <span class="ruby-keyword">return</span> <span class="ruby-identifier">geojson_hash</span>.<span class="ruby-identifier">to_json</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-full_median_point_json" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">full_median_point_json</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="full_median_point_json-source">
+            <pre><span class="ruby-comment"># File lib/epic_geo/twitter_geo.rb, line 55</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">full_median_point_json</span>
+        <span class="ruby-identifier">median_point</span> = <span class="ruby-identifier">find_median_point</span> <span class="ruby-identifier">tweets</span>.<span class="ruby-identifier">collect</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">tweet</span><span class="ruby-operator">|</span>
+                <span class="ruby-identifier">tweet</span>.<span class="ruby-identifier">coordinates</span>[<span class="ruby-string">&quot;coordinates&quot;</span>]
+        <span class="ruby-keyword">end</span>
+
+        <span class="ruby-keyword">return</span> {<span class="ruby-value">:type</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;Point&quot;</span>, <span class="ruby-value">:coordinates</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">median_point</span>}
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-full_user_path_json" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">full_user_path_json</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>————————- GeoJSON Functions —————————–# Create a geojson linestring</p>
+          
+          
+
+          
+          <div class="method-source-code" id="full_user_path_json-source">
+            <pre><span class="ruby-comment"># File lib/epic_geo/twitter_geo.rb, line 49</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">full_user_path_json</span>
+        <span class="ruby-identifier">points</span> = <span class="ruby-identifier">tweets</span>.<span class="ruby-identifier">collect</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">tweet</span><span class="ruby-operator">|</span> <span class="ruby-identifier">tweet</span>.<span class="ruby-identifier">coordinates</span>[<span class="ruby-string">&quot;coordinates&quot;</span>]}
+        <span class="ruby-keyword">return</span> {<span class="ruby-value">:type</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;LineString&quot;</span>, <span class="ruby-value">:coordinates</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">points</span>}
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-individual_points_json" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">individual_points_json</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="individual_points_json-source">
+            <pre><span class="ruby-comment"># File lib/epic_geo/twitter_geo.rb, line 130</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">individual_points_json</span>
+        <span class="ruby-identifier">points</span> = <span class="ruby-identifier">tweets</span>.<span class="ruby-identifier">collect</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">tweet</span><span class="ruby-operator">|</span> <span class="ruby-identifier">tweet</span>.<span class="ruby-identifier">coordinates</span>[<span class="ruby-string">&quot;coordinates&quot;</span>]}
+        <span class="ruby-keyword">return</span> {<span class="ruby-value">:type</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;MultiPoint&quot;</span>, <span class="ruby-value">:coordinates</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">points</span>}
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-individual_tweets_json" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">individual_tweets_json</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Return a geojson Feature Collection of Individual Tweets</p>
+          
+          
+
+          
+          <div class="method-source-code" id="individual_tweets_json-source">
+            <pre><span class="ruby-comment"># File lib/epic_geo/twitter_geo.rb, line 137</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">individual_tweets_json</span>
+        <span class="ruby-identifier">features</span> = []
+        <span class="ruby-identifier">tweets</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">tweet</span><span class="ruby-operator">|</span>
+                <span class="ruby-identifier">features</span> <span class="ruby-operator">&lt;&lt;</span> {<span class="ruby-value">:type</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;Feature&quot;</span>,
+                                                                 <span class="ruby-value">:geometry=</span><span class="ruby-operator">&gt;</span> <span class="ruby-identifier">tweet</span>[<span class="ruby-string">&quot;coordinates&quot;</span>],
+                                                                 <span class="ruby-value">:properties</span> =<span class="ruby-operator">&gt;</span> {
+                                                                                <span class="ruby-value">:text</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">tweet</span>[<span class="ruby-string">&quot;text&quot;</span>],
+                                                                                <span class="ruby-value">:created_at</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">tweet</span>[<span class="ruby-string">&quot;date&quot;</span>],
+                                                                                <span class="ruby-value">:handle</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">tweet</span>[<span class="ruby-string">&quot;handle&quot;</span>].<span class="ruby-identifier">join</span>(<span class="ruby-string">&#39;,&#39;</span>)
+                                                                        }}
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">return</span> {<span class="ruby-value">:type</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;FeatureCollection&quot;</span>, <span class="ruby-value">:features</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">features</span>}
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-point_to_geojson_hash" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">point_to_geojson_hash</span><span
+            class="method-args">(point, features=nil)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="point_to_geojson_hash-source">
+            <pre><span class="ruby-comment"># File lib/epic_geo/twitter_geo.rb, line 64</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">point_to_geojson_hash</span>(<span class="ruby-identifier">point</span>, <span class="ruby-identifier">features</span>=<span class="ruby-keyword">nil</span>)
+        <span class="ruby-keyword">unless</span> <span class="ruby-identifier">features</span>.<span class="ruby-identifier">nil?</span>
+                <span class="ruby-keyword">return</span> {<span class="ruby-value">:type=</span><span class="ruby-operator">&gt;</span><span class="ruby-string">&quot;Feature&quot;</span>,
+                <span class="ruby-value">:properties</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">features</span>,
+                <span class="ruby-value">:geometry=</span><span class="ruby-operator">&gt;</span>{<span class="ruby-value">:type=</span><span class="ruby-operator">&gt;</span><span class="ruby-string">&quot;Point&quot;</span>, <span class="ruby-value">:coordinates=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">point</span>}}
+        <span class="ruby-keyword">else</span>
+                <span class="ruby-keyword">return</span> {<span class="ruby-value">:type=</span><span class="ruby-operator">&gt;</span><span class="ruby-string">&quot;Point&quot;</span>, <span class="ruby-value">:coordinates=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">point</span>}
+        <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-points" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">points</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>——————— GeoSpatial General Functions ————————# Create an rgeo points array
+for all of a user&#39;s tweets</p>
+          
+          
+
+          
+          <div class="method-source-code" id="points-source">
+            <pre><span class="ruby-comment"># File lib/epic_geo/twitter_geo.rb, line 28</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">points</span>
+        <span class="ruby-ivar">@points</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">tweets</span>.<span class="ruby-identifier">collect</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">tweet</span><span class="ruby-operator">|</span> <span class="ruby-identifier">tweet</span>.<span class="ruby-identifier">point</span> } <span class="ruby-comment">#tweet.point returns an Rgeo point for the tweet</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-points_to_geojson_linestring" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">points_to_geojson_linestring</span><span
+            class="method-args">(points, features=nil)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="points_to_geojson_linestring-source">
+            <pre><span class="ruby-comment"># File lib/epic_geo/twitter_geo.rb, line 75</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">points_to_geojson_linestring</span>(<span class="ruby-identifier">points</span>, <span class="ruby-identifier">features</span>=<span class="ruby-keyword">nil</span>)
+        <span class="ruby-keyword">unless</span> <span class="ruby-identifier">features</span>.<span class="ruby-identifier">nil?</span>
+                <span class="ruby-keyword">return</span> {<span class="ruby-value">:type=</span><span class="ruby-operator">&gt;</span><span class="ruby-string">&quot;Feature&quot;</span>,
+                <span class="ruby-value">:properties</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">features</span>,
+                <span class="ruby-value">:geometry=</span><span class="ruby-operator">&gt;</span>{<span class="ruby-value">:type=</span><span class="ruby-operator">&gt;</span><span class="ruby-string">&quot;LineString&quot;</span>, <span class="ruby-value">:coordinates=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">points</span>}}
+        <span class="ruby-keyword">else</span>
+                <span class="ruby-keyword">return</span> {<span class="ruby-value">:type=</span><span class="ruby-operator">&gt;</span><span class="ruby-string">&quot;LineString&quot;</span>, <span class="ruby-value">:coordinates=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">points</span>}
+        <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-tweets_to_geojson" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">tweets_to_geojson</span><span
+            class="method-args">(_start=nil, _end=nil)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="tweets_to_geojson-source">
+            <pre><span class="ruby-comment"># File lib/epic_geo/twitter_geo.rb, line 113</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">tweets_to_geojson</span>(<span class="ruby-identifier">_start</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">_end</span>=<span class="ruby-keyword">nil</span>)
+        <span class="ruby-identifier">geojson_hash</span> = {<span class="ruby-value">:type=</span><span class="ruby-operator">&gt;</span><span class="ruby-string">&quot;FeatureCollection&quot;</span>, <span class="ruby-value">:features=</span><span class="ruby-operator">&gt;</span>[]}
+
+        <span class="ruby-identifier">tweets</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">tweet</span><span class="ruby-operator">|</span>
+                <span class="ruby-keyword">if</span> <span class="ruby-identifier">_start</span>.<span class="ruby-identifier">nil?</span>
+                        <span class="ruby-identifier">geojson_hash</span>[<span class="ruby-value">:features</span>] <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">tweet</span>.<span class="ruby-identifier">as_geojson</span>
+                <span class="ruby-keyword">else</span>
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">tweet</span>.<span class="ruby-identifier">date</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">_start</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">tweet</span>.<span class="ruby-identifier">date</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">_end</span>
+                                <span class="ruby-identifier">geojson_hash</span>[<span class="ruby-value">:features</span>] <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">tweet</span>.<span class="ruby-identifier">as_geojson</span>
+                        <span class="ruby-keyword">end</span>
+                <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">end</span>
+
+        <span class="ruby-keyword">return</span> <span class="ruby-identifier">geojson_hash</span>.<span class="ruby-identifier">to_json</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-user_path" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">user_path</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Create LineString of points</p>
+          
+          
+
+          
+          <div class="method-source-code" id="user_path-source">
+            <pre><span class="ruby-comment"># File lib/epic_geo/twitter_geo.rb, line 38</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">user_path</span>
+        <span class="ruby-ivar">@userpath</span> = <span class="ruby-constant">FACTORY</span>.<span class="ruby-identifier">line_string</span>(<span class="ruby-identifier">points</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-user_points" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">user_points</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Return Just the points as a multi_point geo object</p>
+          
+          
+
+          
+          <div class="method-source-code" id="user_points-source">
+            <pre><span class="ruby-comment"># File lib/epic_geo/twitter_geo.rb, line 33</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">user_points</span>
+        <span class="ruby-constant">FACTORY</span>.<span class="ruby-identifier">multi_point</span>(<span class="ruby-identifier">points</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-userpath_as_epic_kml" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">userpath_as_epic_kml</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>——————— KML Functions ————————-#</p>
+          
+          
+
+          
+          <div class="method-source-code" id="userpath_as_epic_kml-source">
+            <pre><span class="ruby-comment"># File lib/epic_geo/twitter_geo.rb, line 155</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">userpath_as_epic_kml</span>
+        <span class="ruby-identifier">linestring</span> = <span class="ruby-constant">GeoRuby</span><span class="ruby-operator">::</span><span class="ruby-constant">SimpleFeatures</span><span class="ruby-operator">::</span><span class="ruby-constant">LineString</span>.<span class="ruby-identifier">from_coordinates</span>(
+                <span class="ruby-identifier">tweets</span>.<span class="ruby-identifier">collect</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">tweet</span><span class="ruby-operator">|</span> <span class="ruby-identifier">tweet</span>.<span class="ruby-identifier">coordinates</span>[<span class="ruby-string">&quot;coordinates&quot;</span>]} )
+
+        {<span class="ruby-value">:name</span>                       =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">handle</span>,
+         <span class="ruby-value">:geometry</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">linestring</span>,
+        }
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://rdoc.rubyforge.org">RDoc</a> 4.1.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

@@ -1,17 +1,15 @@
-#
-# Geo-Processing Functions
-#
-# This is strictly for processing.  These methods should not make outside calls
-# to models/classes
-
 module EpicGeo
+	#Geo-Processing Functions
+	#
+	#This is strictly for processing.  These methods should not make outside calls
+	#to models/classes
 	module GeoProcessing
 
 		#Algorithm adopted from Andrew Hardin's C# function.
-		# Given an array of points, this function will sort the x,y coordinates and
-		# return the median point.  This seems to work better than an averaging
-		# function because the median point will not geographically consider far outlying
-		# points.
+		#Given an array of points, this function will sort the x,y coordinates and
+		#return the median point.  This seems to work better than an averaging
+		#function because the median point will not geographically consider far outlying
+		#points.
 		def find_median_point(points_array)
 			x = []
 			y = []
@@ -30,6 +28,7 @@ module EpicGeo
 			end
 		end
 
+		#Casts two two-element arrays to two point objects and returns the distance between them
 		def get_distance_from_point_arrays(a1, a2)
 			p1 = geofactory.point(a1[0],a1[1])
 			p2 = geofactory.point(a2[0],a2[1])
@@ -39,7 +38,7 @@ module EpicGeo
 
 
 		#Density is defined as 2^(number of tweets) / (area of the tweets)
-		# This is an exponential function because it needed more weight on the number of tweets
+		#This is an exponential function because it needed more weight on the number of tweets
 		def calculate_density(tweets)
 			num_tweets = tweets.length
 			multi_points = geofactory.multi_point(tweets.collect{|tweet| tweet.point})
@@ -56,7 +55,7 @@ module EpicGeo
 
 
 		#Find the densest cluster from a cluster of tweets, this could be a home?
-		# --> Should check the timing of this.
+		#Should check the timing of this.
 		def get_most_dense_cluster(tweet_clusters)
 			# puts "Length: #{tweet_clusters.length}"
 			most_dense = tweet_clusters[0]

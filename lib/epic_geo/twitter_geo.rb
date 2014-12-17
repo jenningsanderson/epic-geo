@@ -12,6 +12,10 @@ module EpicGeo
 		  	 }
 	end
 
+	def coords_as_geojson(coords)
+		{type: "Point", coordinates: coords}
+	end
+
 
 	#TODO: Build a better query iterator that doesn't time out
 
@@ -27,12 +31,16 @@ module EpicGeo
 
 		# Return Just the points as a multi_point geo object
 		def user_points
-			factory.multi_point(points)
+			FACTORY.multi_point(points)
 		end
 
 		# Create LineString of points
 		def user_path
-			@userpath = factory.line_string(points)
+			@userpath = FACTORY.line_string(points)
+		end
+
+		def coords_as_point(coordinates)
+			FACTORY.point(coordinates[0],coordinates[1])
 		end
 
 
@@ -157,14 +165,13 @@ module EpicGeo
 
 
 
-
-
 	#Make a Tweet Geo-aware!
 	module GeoTweet
 		
 		#Used for DBScan Clustering
   		attr_accessor :cluster, :visited
 
+  		#Get the coordinates of the tweet as an rgeo point object
 		def point
     		@point ||= FACTORY.point(
     			coordinates["coordinates"][0],
@@ -172,7 +179,7 @@ module EpicGeo
   		end
 
  		#To write the tweet to a kml file from epic-geo,
-  		#it must be formatted as follows:
+  		#it must be formatted as follows
 		def as_epic_kml(style=nil)
 		{:time     => date,
 		 :style    => style,
@@ -181,21 +188,10 @@ module EpicGeo
 		   coordinates["coordinates"][1] ),
 		 :name     => nil, #Setting name to nil because otherwise it's hard to see
 		 :desc     =>
-		 %Q{#{@handle}<br />
-		    #{@text}<br />
-		    #{@date}}
+		 %Q{#{handle}<br />
+		    #{text}<br />
+		    #{date}}
 		}
 		end
-
-  		#Return this tweet as valid GeoJSON
-  		def as_geojson
-    		{ 	type: "Feature",
-     		 	properties: { 	time: 	date,
-            		       		text: 	text,
-                    	   		handle: handle
-                    	   	 },
-     		 	geometry: coordinates
-     		 }
-  		end
 	end
 end

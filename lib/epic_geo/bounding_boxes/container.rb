@@ -1,13 +1,9 @@
-#
-# EpicGeo extension to create containers and bounding boxes
-# => 
-#
-#
-
 require 'rgeo'
 require 'rgeo-geojson'
 
 module EpicGeo
+
+	#A container allows for geographically contrained operations
 	module Container
 
 		class Container #Can I inherit geo methods here, or is that poor form?
@@ -22,6 +18,7 @@ module EpicGeo
 			end
 		end
 
+		#Generic Bounding Box wrapper for all types of geometries to act as bounding boxes.
 		class BoundingBox < Container
 
 			attr_reader :geojson, :geometry, :features, :factory
@@ -34,16 +31,15 @@ module EpicGeo
 			end
 
 			def post_initialize(args)
-
 				if geojson
 					load_geojson(geojson)
 				end
 			end
 			
+			#Parse a geojson file in as the features / geometry for the bounding box.
 			def load_geojson(geojson_file)
 				geo_json = File.read(geojson_file)
 				@features = RGeo::GeoJSON.decode(geo_json, json_parser: :json)
-
 				@geometry=factory.parse_wkt(features.first.geometry.to_s)
 			end
 		end

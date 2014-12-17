@@ -1,16 +1,13 @@
-#
-# K-Means Clustering
-#
-# Allows Tweets to be used as points for x-iterations of k clusters. 
-#
-# Adapted from: https://gist.github.com/cfdrake/995804
-# Deprecated as clustering method for Tweets
-
 module EpicGeo
+
   module Clustering
-
-
-
+    
+    #K-Means Clustering
+    #
+    #Allows Tweets to be used as points for x-iterations of k clusters. 
+    #
+    #Adapted from: https://gist.github.com/cfdrake/995804
+    #Deprecated as clustering method for Tweets
     module KMeans
 
       INFINITY = 1.0/0

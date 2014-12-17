@@ -1,0 +1,21 @@
+Fri, 21 Nov 2014 17:05:23 -0700
+./lib/epic_geo/bounding_boxes/container.rb	Fri, 21 Nov 2014 16:55:39 -0700
+./lib/epic_geo/geoprocessing/db_scan.rb	Fri, 21 Nov 2014 16:45:18 -0700
+./lib/epic_geo/geoprocessing/geoprocessing.rb	Fri, 21 Nov 2014 16:56:54 -0700
+./lib/epic_geo/geoprocessing/k-means.rb	Fri, 21 Nov 2014 16:57:23 -0700
+./lib/epic_geo/twitter_geo.rb	Fri, 21 Nov 2014 17:05:20 -0700
+./lib/epic_geo/writers/google_drive/google_sheets.rb	Fri, 31 Oct 2014 16:55:22 -0600
+./lib/epic_geo/writers/html/archive_maker.rb	Fri, 10 Oct 2014 19:25:54 -0600
+./lib/epic_geo/writers/html/html_writer.rb	Fri, 10 Oct 2014 19:25:54 -0600
+./lib/epic_geo/writers/html/page_models.rb	Fri, 10 Oct 2014 19:25:54 -0600
+./lib/epic_geo/writers/html/templates/styles.rb	Fri, 10 Oct 2014 19:25:54 -0600
+./lib/epic_geo/writers/kml/kml_style_helper.rb	Fri, 10 Oct 2014 19:25:54 -0600
+./lib/epic_geo/writers/kml/kml_writer.rb	Fri, 10 Oct 2014 20:18:35 -0600
+./lib/epic_geo.rb	Fri, 21 Nov 2014 16:52:12 -0700
+./LICENSE	Fri, 09 May 2014 14:26:35 -0600
+./README.md	Fri, 21 Nov 2014 16:43:17 -0700
+./spec/bounding_boxes/container_spec.rb	Fri, 10 Oct 2014 19:34:45 -0600
+./spec/spec_helper.rb	Fri, 21 Nov 2014 16:50:04 -0700
+./spec/writing/html_archive_spec.rb	Fri, 10 Oct 2014 19:25:54 -0600
+./spec/writing/kml_spec.rb	Fri, 10 Oct 2014 19:25:54 -0600
+./spec/writing/spec_helper.rb	Fri, 10 Oct 2014 19:25:54 -0600

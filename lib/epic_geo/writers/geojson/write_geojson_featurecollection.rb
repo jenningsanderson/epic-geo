@@ -9,14 +9,13 @@ module EpicGeo
     class GeoJSONWriter
 
       require 'json'
-      attr_reader :filename
+      attr_reader :filename, :extension
 
-      def initialize(filename)
-        @filename = filename.dup #Getting weird frozen error...
-        unless @filename =~ /\.geojson$/
-          @filename << '.geojson'
-        end
-        @open_file = File.open(@filename, 'w')
+      def initialize(args)
+        @filename = args[:filename]
+        @extension = args[:extension] || "geojson"
+       
+        @open_file = File.open("#{filename}.#{extension}", 'w')
       end
 
       def add_options(options_array)
@@ -54,10 +53,10 @@ module EpicGeo
       def write_footer
         #Close the file and then truncate the last comma
         @open_file.close()
-        File.truncate(@filename, File.size(@filename) - 1) #Remove the last comma
+        File.truncate("#{filename}.#{extension}", File.size("#{filename}.#{extension}") - 1) #Remove the last comma
 
         #Open the file again and close the object
-        File.open(@filename,'a') do |file|
+        File.open("#{filename}.#{extension}",'a') do |file|
           file.write(']}')
         end
       end

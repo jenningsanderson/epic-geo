@@ -24,14 +24,35 @@ class GoogleDriveAccess
 
 
 	def post_initialize(args)
+
 		begin
-			@session = GoogleDrive.login(credentials['google_username'], credentials['google_password'])
+			@session = GoogleDrive.login_with_oauth(get_token)
+			# @session = GoogleDrive.login(credentials['google_username'], credentials['google_password'])
 			@collection = session.collection_by_title(args[:collection])
 		rescue => e
 			puts "Error logging in and accessing sheet!"
 			puts $!
 			exit 1
 		end
+	end
+
+	def get_token
+		# Authorizes with OAuth and gets an access token.
+		client = Google::APIClient.new
+		auth = client.authorization
+		auth.client_id = credentials['google_oauth_id']
+		auth.client_secret = credentials['google_oauth_secret']
+		auth.scope =
+    		"https://www.googleapis.com/auth/drive " +
+    		"https://docs.google.com/feeds/ " +
+    		"https://docs.googleusercontent.com/ " +
+    		"https://spreadsheets.google.com/feeds/"
+		auth.redirect_uri = "urn:ietf:wg:oauth:2.0:oob"
+		print("1. Open this page:\n%s\n\n" % auth.authorization_uri)
+		print("2. Enter the authorization code shown in the page: ")
+		auth.code = $stdin.gets.chomp
+		auth.fetch_access_token!
+		return auth.access_token
 	end
 end
 
@@ -95,7 +116,10 @@ module EpicGeo
 				end
 			end
 
-			class SingleSheet #This is just to write a single worksheet, it shouldn't need any fancy information
+			#=Handles a Single Sheet within a Workbook
+			#
+			#This is just a basic wrapper on the google_drive gem to handle custom headers
+			class SingleSheet
 
 				attr_reader :ws, :row_index
 				

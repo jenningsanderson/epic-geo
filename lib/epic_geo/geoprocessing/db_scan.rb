@@ -1,20 +1,22 @@
-# DB Scan
-#
-# First Modified by Jennings Anderson July 31, 2014
-#
-# Modified to allow Tweets to maintain in their original form
-#
-
-#Original Header:
-####################################################
-# shiguodong, June 2011
-# References:
-#   1. see also wikipedia entry (this implementation is similar to
-#      their pseudo code): http://en.wikipedia.org/wiki/DBSCAN
-####################################################
-
 module EpicGeo
+
+	#Holds all geo-spatial clustering methods, specifically tuned to tweets,
+	#but any objects which respond to @#point@ should work.
 	module Clustering
+
+		#DB Scan
+		#
+		#First Modified by Jennings Anderson July 31, 2014
+		#
+		#Modified to allow Tweets to maintain in their original form
+		#
+		#Original Header:
+		####################################################
+		# shiguodong, June 2011
+		# References:
+		# 1. see also wikipedia entry (this implementation is similar to
+		#    their pseudo code): http://en.wikipedia.org/wiki/DBSCAN
+		####################################################
 
 		class DBScan
 

@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class Object - RDoc Documentation</title>
+
+<link href="./fonts.css" rel="stylesheet">
+<link href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script src="./js/jquery.js"></script>
+<script src="./js/navigation.js"></script>
+<script src="./js/search_index.js"></script>
+<script src="./js/search.js"></script>
+<script src="./js/searcher.js"></script>
+<script src="./js/darkfish.js"></script>
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link">BasicObject
+  
+</div>
+
+    <div id="includes-section" class="nav-section">
+  <h3>Included Modules</h3>
+
+  <ul class="link-list">
+  
+  
+    <li><a class="include" href="EpicGeo/Writers/KML.html">EpicGeo::Writers::KML</a>
+  
+  
+  </ul>
+</div>
+
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-i-add_style">#add_style</a>
+    
+    <li ><a href="#method-i-generate_random_styles">#generate_random_styles</a>
+    
+    <li ><a href="#method-i-random_hex_color">#random_hex_color</a>
+    
+    <li ><a href="#method-i-write_3_bin_styles">#write_3_bin_styles</a>
+    
+    <li ><a href="#method-i-write_color_ramp_style">#write_color_ramp_style</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-Object">
+  <h1 id="class-Object" class="class">
+    class Object
+  </h1>
+
+  <section class="description">
+    
+  </section>
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+    <section class="constants-list">
+      <header>
+        <h3>Constants</h3>
+      </header>
+      <dl>
+      
+        <dt id="FACTORY">FACTORY
+        
+        <dd>
+        
+      
+      </dl>
+    </section>
+    
+
+    
+
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-add_style" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">add_style</span><span
+            class="method-args">(current_file, style)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="add_style-source">
+            <pre><span class="ruby-comment"># File lib/epic_geo/writers/kml/kml_style_helper.rb, line 1</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">add_style</span>(<span class="ruby-identifier">current_file</span>, <span class="ruby-identifier">style</span>)
+  <span class="ruby-identifier">current_file</span>.<span class="ruby-identifier">write</span> <span class="ruby-node">&quot;&lt;Style id=\&quot;#{style[:id]}\&quot;&gt;&quot;</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">style</span>.<span class="ruby-identifier">has_key?</span> <span class="ruby-value">:polygon</span>
+    <span class="ruby-identifier">current_file</span>.<span class="ruby-identifier">write</span> <span class="ruby-node">%Q{&lt;PolyStyle&gt;
+    &lt;color&gt;#{style[:polygon][:color]}&lt;/color&gt;&quot;
+    &lt;/PolyStyle&gt;
+}</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">style</span>.<span class="ruby-identifier">has_key?</span> <span class="ruby-value">:point</span>
+    <span class="ruby-identifier">current_file</span>.<span class="ruby-identifier">write</span> <span class="ruby-node">%Q{&lt;IconStyle&gt;
+    &lt;Icon&gt;http://maps.google.com/mapfiles/kml/paddle/wht-blank-lv.png&lt;/Icon&gt;
+    &lt;color&gt;#{style[:point][:color]}&lt;/color&gt;
+    &lt;LabelStyle&gt;&lt;scale&gt;#{style[:point][:text]}&lt;/scale&gt;&lt;/LabelStyle&gt;
+  &lt;/IconStyle&gt;
+}</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">current_file</span>.<span class="ruby-identifier">write</span> <span class="ruby-string">&quot;&lt;/Style&gt;&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-generate_random_styles" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">generate_random_styles</span><span
+            class="method-args">(current_file, number_of_styles)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="generate_random_styles-source">
+            <pre><span class="ruby-comment"># File lib/epic_geo/writers/kml/kml_style_helper.rb, line 74</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">generate_random_styles</span>(<span class="ruby-identifier">current_file</span>, <span class="ruby-identifier">number_of_styles</span>)
+  <span class="ruby-identifier">number_of_styles</span>.<span class="ruby-identifier">times</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">id</span><span class="ruby-operator">|</span>
+    <span class="ruby-comment">#Generate a random hex color</span>
+    <span class="ruby-identifier">color</span> = <span class="ruby-identifier">random_hex_color</span>
+
+    <span class="ruby-comment">#Open the Style</span>
+    <span class="ruby-identifier">current_file</span>.<span class="ruby-identifier">write</span> <span class="ruby-node">&quot;&lt;Style id=\&quot;r_style_#{id}\&quot;&gt;\n&quot;</span>
+
+    <span class="ruby-comment">#Point</span>
+    <span class="ruby-identifier">current_file</span>.<span class="ruby-identifier">write</span> <span class="ruby-node">%Q{\t&lt;IconStyle&gt;
+      &lt;color&gt;77#{color}&lt;/color&gt;
+       &lt;scale&gt;.5&lt;/scale&gt;
+       &lt;Icon&gt;http://maps.google.com/mapfiles/kml/paddle/wht-blank-lv.png&lt;/Icon&gt;
+        &lt;LabelStyle&gt;
+          &lt;scale&gt;0&lt;/scale&gt;
+        &lt;/LabelStyle&gt;
+  &lt;/IconStyle&gt;\n}</span>
+
+    <span class="ruby-comment">#Line</span>
+    <span class="ruby-identifier">current_file</span>.<span class="ruby-identifier">write</span> <span class="ruby-node">%Q{\t&lt;LineStyle&gt;
+      &lt;color&gt;77#{color}&lt;/color&gt;
+      &lt;width&gt;1.5&lt;/width&gt;
+  &lt;/LineStyle&gt;\n}</span>
+
+    <span class="ruby-comment">#Poly</span>
+    <span class="ruby-identifier">current_file</span>.<span class="ruby-identifier">write</span> <span class="ruby-node">%Q{\t&lt;PolyStyle&gt;
+      &lt;color&gt;AA#{color}&lt;/color&gt;
+      &lt;BalloonStyle&gt;
+        &lt;text&gt;&amp;lt;h1&amp;gt;$[name]&amp;lt;/h1&amp;gt;$[description]&lt;/text&gt;
+        &lt;bgColor&gt;ffd5efff&lt;/bgColor&gt;
+      &lt;/BalloonStyle&gt;
+  &lt;/PolyStyle&gt;\n}</span>
+    <span class="ruby-identifier">current_file</span>.<span class="ruby-identifier">write</span> <span class="ruby-string">&quot;&lt;/Style&gt;\n\n&quot;</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-random_hex_color" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">random_hex_color</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="random_hex_color-source">
+            <pre><span class="ruby-comment"># File lib/epic_geo/writers/kml/kml_style_helper.rb, line 20</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">random_hex_color</span>
+  (<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">5</span>).<span class="ruby-identifier">map</span>{ <span class="ruby-identifier">rand</span>(<span class="ruby-value">16</span>).<span class="ruby-identifier">to_s</span>(<span class="ruby-value">16</span>) }.<span class="ruby-identifier">join</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-write_3_bin_styles" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">write_3_bin_styles</span><span
+            class="method-args">(current_file)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="write_3_bin_styles-source">
+            <pre><span class="ruby-comment"># File lib/epic_geo/writers/kml/kml_style_helper.rb, line 110</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">write_3_bin_styles</span>(<span class="ruby-identifier">current_file</span>)
+  <span class="ruby-identifier">current_file</span>.<span class="ruby-identifier">write</span> <span class="ruby-string">%Q{
+  &lt;Style id=&quot;before&quot;&gt;
+    &lt;IconStyle&gt;
+      &lt;scale&gt;0.4&lt;/scale&gt;
+      &lt;Icon&gt;
+        &lt;href&gt;http://maps.google.com/mapfiles/kml/paddle/grn-blank-lv.png&lt;/href&gt;
+      &lt;/Icon&gt;
+    &lt;/IconStyle&gt;
+    &lt;LabelStyle&gt;
+      &lt;scale&gt;0&lt;/scale&gt;
+    &lt;/LabelStyle&gt;
+    &lt;LineStyle&gt;
+      &lt;color&gt;ff5bbd00&lt;/color&gt;
+      &lt;width&gt;1.4&lt;/width&gt;
+    &lt;/LineStyle&gt;
+  &lt;/Style&gt;
+
+  &lt;Style id=&quot;during&quot;&gt;
+    &lt;IconStyle&gt;
+      &lt;scale&gt;0.4&lt;/scale&gt;
+      &lt;Icon&gt;
+        &lt;href&gt;http://maps.google.com/mapfiles/kml/paddle/red-circle-lv.png&lt;/href&gt;
+      &lt;/Icon&gt;
+    &lt;/IconStyle&gt;
+    &lt;LabelStyle&gt;
+      &lt;scale&gt;0&lt;/scale&gt;
+    &lt;/LabelStyle&gt;
+    &lt;LineStyle&gt;
+      &lt;color&gt;ff1515a6&lt;/color&gt;
+      &lt;width&gt;1.4&lt;/width&gt;
+    &lt;/LineStyle&gt;
+  &lt;/Style&gt;
+
+  &lt;Style id=&quot;after&quot;&gt;
+    &lt;IconStyle&gt;
+      &lt;scale&gt;0.4&lt;/scale&gt;
+      &lt;Icon&gt;
+        &lt;href&gt;http://maps.google.com/mapfiles/kml/paddle/ylw-blank-lv.png&lt;/href&gt;
+      &lt;/Icon&gt;
+    &lt;/IconStyle&gt;
+    &lt;LabelStyle&gt;
+      &lt;scale&gt;0&lt;/scale&gt;
+            &lt;/LabelStyle&gt;
+    &lt;LineStyle&gt;
+      &lt;color&gt;ff7fffff&lt;/color&gt;
+      &lt;width&gt;1.4&lt;/width&gt;
+    &lt;/LineStyle&gt;
+  &lt;/Style&gt;}</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-write_color_ramp_style" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">write_color_ramp_style</span><span
+            class="method-args">(current_file, number_of_styles)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="write_color_ramp_style-source">
+            <pre><span class="ruby-comment"># File lib/epic_geo/writers/kml/kml_style_helper.rb, line 24</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">write_color_ramp_style</span>(<span class="ruby-identifier">current_file</span>, <span class="ruby-identifier">number_of_styles</span>)
+
+  <span class="ruby-comment">#Base color:</span>
+  <span class="ruby-identifier">base_color</span> = <span class="ruby-string">&#39;7714E7FF&#39;</span>
+  <span class="ruby-identifier">step</span> = <span class="ruby-value">256</span><span class="ruby-operator">/</span><span class="ruby-identifier">number_of_styles</span>
+
+  <span class="ruby-identifier">vals</span> = (<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-identifier">number_of_styles</span>).<span class="ruby-identifier">to_a</span>.<span class="ruby-identifier">reverse</span>
+  <span class="ruby-identifier">vals</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">id</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">val</span> = (<span class="ruby-identifier">id</span><span class="ruby-operator">*</span><span class="ruby-identifier">step</span>).<span class="ruby-identifier">to_s</span>(<span class="ruby-value">16</span>)
+    <span class="ruby-identifier">val</span>.<span class="ruby-identifier">upcase!</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">val</span>.<span class="ruby-identifier">length</span><span class="ruby-operator">==</span><span class="ruby-value">1</span>
+        <span class="ruby-identifier">val</span> = <span class="ruby-string">&#39;0&#39;</span><span class="ruby-operator">+</span><span class="ruby-identifier">val</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">color</span> = <span class="ruby-identifier">base_color</span>[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">3</span>]<span class="ruby-operator">+</span><span class="ruby-identifier">val</span><span class="ruby-operator">+</span><span class="ruby-identifier">base_color</span>[<span class="ruby-value">6</span><span class="ruby-operator">..</span><span class="ruby-value">7</span>]
+
+    <span class="ruby-comment">#Open the Style</span>
+    <span class="ruby-identifier">current_file</span>.<span class="ruby-identifier">write</span> <span class="ruby-node">&quot;&lt;Style id=\&quot;c_ramp_style_#{id-1}\&quot;&gt;\n&quot;</span>
+    <span class="ruby-identifier">current_file</span>.<span class="ruby-identifier">write</span> <span class="ruby-string">%Q{\t&lt;LabelStyle&gt;
+      &lt;scale&gt;0&lt;/scale&gt;
+  &lt;/LabelStyle&gt;
+    }</span>
+
+    <span class="ruby-comment">#Point</span>
+    <span class="ruby-identifier">current_file</span>.<span class="ruby-identifier">write</span> <span class="ruby-node">%Q{\t&lt;IconStyle&gt;
+      &lt;color&gt;#{color}&lt;/color&gt;
+       &lt;scale&gt;.3&lt;/scale&gt;
+       &lt;Icon&gt;http://maps.google.com/mapfiles/kml/paddle/wht-blank-lv.png&lt;/Icon&gt;
+        &lt;LabelStyle&gt;
+          &lt;scale&gt;.1&lt;/scale&gt;
+        &lt;/LabelStyle&gt;
+  &lt;/IconStyle&gt;\n}</span>
+
+    <span class="ruby-comment">#Line</span>
+    <span class="ruby-identifier">current_file</span>.<span class="ruby-identifier">write</span> <span class="ruby-node">%Q{\t&lt;LineStyle&gt;
+      &lt;color&gt;#{color}&lt;/color&gt;
+      &lt;width&gt;1.5&lt;/width&gt;
+  &lt;/LineStyle&gt;\n}</span>
+
+    <span class="ruby-comment">#Poly</span>
+    <span class="ruby-identifier">current_file</span>.<span class="ruby-identifier">write</span> <span class="ruby-node">%Q{\t&lt;PolyStyle&gt;
+      &lt;color&gt;#{color}&lt;/color&gt;
+      &lt;BalloonStyle&gt;
+        &lt;text&gt;&amp;lt;h1&amp;gt;$[name]&amp;lt;/h1&amp;gt;$[description]&lt;/text&gt;
+        &lt;bgColor&gt;ffd5efff&lt;/bgColor&gt;
+      &lt;/BalloonStyle&gt;
+  &lt;/PolyStyle&gt;\n}</span>
+    <span class="ruby-identifier">current_file</span>.<span class="ruby-identifier">write</span> <span class="ruby-string">&quot;&lt;/Style&gt;\n\n&quot;</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://rdoc.rubyforge.org">RDoc</a> 4.1.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+
