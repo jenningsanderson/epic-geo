@@ -8,9 +8,9 @@ Gem::Specification.new do |s|
   s.summary           = "A Gem for Handling Geo Data (Predominately Tweets)"
   s.description       = "The Gem is optimized to work with Project EPIC data at University of Colorado Boulder, but I've attempted to write it as general as possible"
   s.rubyforge_project = s.name
+  s.license           = "MIT"
 
-
-  s.add_runtime_dependency "json", "~> 1.8.3"
+  s.add_runtime_dependency "json", "~> 1.8"
   s.add_runtime_dependency "rgeo", "~> 0.3.20"
 
   # The list of files to be contained in the gem
