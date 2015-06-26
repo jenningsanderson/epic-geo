@@ -26,7 +26,6 @@ class GoogleDriveAccess
 
 		begin
 			@session = GoogleDrive.login_with_oauth(get_token)
-			# @session = GoogleDrive.login(credentials['google_username'], credentials['google_password'])
 			@collection = session.collection_by_title(args[:collection])
 		rescue => e
 			puts "Error logging in and accessing sheet!"

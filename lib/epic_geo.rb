@@ -11,8 +11,7 @@ $:.unshift File.dirname(__FILE__)+'/epic_geo'
 module EpicGeo
 
 	#TODO
-	#A default factory should be defined here that can be easily over-ridden
-	
+
 	#I want, nay, I need specific geo functions for tweets and twitterers.
 	require 'twitter_geo'
 
@@ -31,7 +30,8 @@ module EpicGeo
 	require 'writers/geojson/write_geojson_featurecollection'
 
 	#This will throw an error if google_drive gem is not available, this should be done via lazy loading
-	require 'writers/google_drive/google_sheets'
+	#TODO: Update the oauth business here if we need to write to google drive... or just not.
+	# require 'writers/google_drive/google_sheets'
 
 	require 'writers/html/archive_maker'
 

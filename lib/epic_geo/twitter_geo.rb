@@ -1,26 +1,18 @@
-#This will be killed soon (or should be):
-require 'georuby'
 require 'rgeo'
 
 module EpicGeo
-
-	# A helper function to convert a point to epic-KML
-	def point_as_epic_kml(name, x, y, style=nil)
-			{ 	name:  name,
-				style: style,
-		  		geometry: GeoRuby::SimpleFeatures::Point.from_coordinates([x,y]) 
-		  	 }
-	end
 
 	def coords_as_geojson(coords)
 		{type: "Point", coordinates: coords}
 	end
 
 
-	#TODO: Build a better query iterator that doesn't time out
-
-
-	# The only dependency of this module is for the Twitterer to have a collection of tweets
+	# The main this module is for the Twitterer to have a collection of tweet
+	#  objects which include ::GeoTweet
+	#
+	# A global variable $factory, should be set with the desired factory for the
+	# 	dataset.
+	#
 	module GeoTwitterer
 
 		# --------------------- GeoSpatial General Functions ------------------------#
@@ -31,16 +23,16 @@ module EpicGeo
 
 		# Return Just the points as a multi_point geo object
 		def user_points
-			FACTORY.multi_point(points)
+			$factory.multi_point(points)
 		end
 
 		# Create LineString of points
 		def user_path
-			@userpath = FACTORY.line_string(points)
+			@userpath = $factory.line_string(points)
 		end
 
 		def coords_as_point(coordinates)
-			FACTORY.point(coordinates[0],coordinates[1])
+			$factory.point(coordinates[0],coordinates[1])
 		end
 
 
@@ -126,7 +118,6 @@ module EpicGeo
 			return geojson_hash.to_json
 		end
 
-
 		def individual_points_json
 			points = tweets.collect{ |tweet| tweet.coordinates["coordinates"]}
 			return {:type => "MultiPoint", :coordinates => points}
@@ -147,51 +138,22 @@ module EpicGeo
 			end
 			return {:type => "FeatureCollection", :features => features}
 		end
-
-
-
-		# --------------------- KML Functions -------------------------#
-
-		def userpath_as_epic_kml
-			linestring = GeoRuby::SimpleFeatures::LineString.from_coordinates(
-				tweets.collect{|tweet| tweet.coordinates["coordinates"]} )
-
-			{:name 			=> handle,
-			 :geometry => linestring,
-			}
-		end
-
 	end
-
 
 
 	#Make a Tweet Geo-aware!
 	module GeoTweet
-		
-		#Used for DBScan Clustering
-  		attr_accessor :cluster, :visited
 
-  		#Get the coordinates of the tweet as an rgeo point object
+  	#Get the coordinates of the tweet as an rgeo point object
 		def point
-    		@point ||= FACTORY.point(
-    			coordinates["coordinates"][0],
-    			coordinates["coordinates"][1])
-  		end
+    	@point ||= $factory.point(
+    		coordinates[0],
+    		coordinates[1])
+  	end
 
- 		#To write the tweet to a kml file from epic-geo,
-  		#it must be formatted as follows
-		def as_epic_kml(style=nil)
-		{:time     => date,
-		 :style    => style,
-		 :geometry => GeoRuby::SimpleFeatures::Point.from_x_y(
-		   coordinates["coordinates"][0],
-		   coordinates["coordinates"][1] ),
-		 :name     => nil, #Setting name to nil because otherwise it's hard to see
-		 :desc     =>
-		 %Q{#{handle}<br />
-		    #{text}<br />
-		    #{date}}
-		}
+		#Return the tweet as a hash in valid geojson for storing as a complete feature in a GeoJSON file.
+		def as_geojson
+			{:type=>"Feature", :properties=>{:time=>date.iso8601, :text=>text}, :geometry=>coordinates}
 		end
 	end
 end
