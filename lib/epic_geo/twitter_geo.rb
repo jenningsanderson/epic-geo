@@ -43,7 +43,6 @@ module EpicGeo
 			return {:type => "LineString", :coordinates => points}
 		end
 
-
 		def full_median_point_json
 			median_point = find_median_point tweets.collect do |tweet|
 				tweet.coordinates["coordinates"]
@@ -51,7 +50,6 @@ module EpicGeo
 
 			return {:type => "Point", :coordinates => median_point}
 		end
-
 
 		def point_to_geojson_hash(point, features=nil)
 			unless features.nil?
@@ -61,6 +59,22 @@ module EpicGeo
 			else
 				return {:type=>"Point", :coordinates=>point}
 			end
+		end
+
+		def cluster_locations_as_geojson
+			feat = {type: "FeatureCollection", properties: {user: handle}, features: []}
+			# puts clusters
+			clusters.each do |cluster_id, tweets|
+				feat[:features] << {
+					type: "Feature",
+					properties: {
+						id: cluster_id,
+						tweets: tweets.count
+					},
+					geometry: {type: "Point", coordinates: cluster_locations[cluster_id]}
+				}
+			end
+			return feat
 		end
 
 
@@ -102,17 +116,31 @@ module EpicGeo
 		end
 
 
-		def tweets_to_geojson(_start=nil, _end=nil)
+		def tweets_to_geojson(_start=nil, _end=nil, with_line=false)
 			geojson_hash = {:type=>"FeatureCollection", :features=>[]}
 
-			tweets.each do |tweet|
+			tweets.each_with_index do |tweet,idx|
 				if _start.nil?
 					geojson_hash[:features] << tweet.as_geojson
 				else
 					if tweet.date > _start and tweet.date < _end
+
 						geojson_hash[:features] << tweet.as_geojson
+
+						if with_line and !tweets[idx+1].nil?
+							geojson_hash[:features] << {
+								type: "Feature",
+								properties: {},
+								geometry:{
+									type: "LineString",
+									coordinates: [tweet.coordinates, tweets[idx+1].coordinates]
+								}
+							}
+						end
 					end
 				end
+
+
 			end
 
 			return geojson_hash.to_json
@@ -153,7 +181,7 @@ module EpicGeo
 
 		#Return the tweet as a hash in valid geojson for storing as a complete feature in a GeoJSON file.
 		def as_geojson
-			{:type=>"Feature", :properties=>{:time=>date.iso8601, :text=>text}, :geometry=>coordinates}
+			{:type=>"Feature", :properties=>{:time=>local_date.iso8601, :text=>text, :cluster => cluster_id}, :geometry=>{type: "Point", coordinates: coordinates}}
 		end
 	end
 end

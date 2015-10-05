@@ -87,16 +87,13 @@ module EpicGeo
 				return cluster_points
 			end
 
-			#=Perform all of the distance calculations in n^2 time, then just look them up
-			#
+			#=Perform all of the distance calculations in n^2 / 2 time, then just look them up
 			#
 			def build_distance_matrix
 				@distance_hash = {}
 				tweets.each_with_index do |tweet_i, idx|
 					tweets[idx+1..-1].each do |tweet_j|
-
 						d = tweet_i.point.distance(tweet_j.point)
-
 						@distance_hash[ [tweet_i.id, tweet_j.id] ] = d
 						@distance_hash[ [tweet_j.id, tweet_i.id] ] = d
 					end

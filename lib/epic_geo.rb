@@ -25,7 +25,6 @@ module EpicGeo
 	#Containers
 	require 'bounding_boxes/container'
 
-	#Writers
 	#I'd rather perform a lazy load for these, but I don't know how to handle these? -- handle these later?
 	require 'writers/geojson/write_geojson_featurecollection'
 
